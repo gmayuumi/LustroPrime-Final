@@ -3,14 +3,14 @@
     --color-gray-metal: #888888;
     --color-gray-dark: #2a2a2a;
     --color-white-bright: #ffffff;
-    --color-red-scarlet: #b80f0a;
+    --color-primary-blue: #00aeff; 
+    --color-orange-cta: #FFA500; 
     --color-green-whatsapp: #25D366;
-    --color-gold: #fbbc05; 
 
     --font-heading: 'Oswald', sans-serif;
     --font-body: 'Poppins', sans-serif;
     
-    --header-height: 8rem;
+    --header-height: 9rem; /* --- ALTERAÇÃO: Aumentado para acomodar a logo maior --- */
 }
 
 * {
@@ -34,12 +34,29 @@ body {
     -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .logo {
+h1, h2, h3, h4 {
     font-family: var(--font-heading);
     text-transform: uppercase;
     font-weight: 700;
     color: var(--color-black-carbon);
 }
+
+.logo {
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+    font-weight: 700;
+    color: var(--color-black-carbon);
+}
+
+/* --- ALTERAÇÃO: Logo maior e com efeito de brilho --- */
+.logo img {
+    max-height: 7.5rem; /* Aumentado para a logo ficar maior */
+    width: auto;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.6)); /* Efeito de brilho para destacar */
+    will-change: filter, max-height; /* Otimização para animação */
+}
+
 
 a {
     text-decoration: none;
@@ -82,7 +99,7 @@ section {
     transform: translateX(-50%);
     width: 6rem;
     height: 0.4rem;
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-primary-blue);
 }
 
 .section-subtitle {
@@ -107,15 +124,15 @@ section {
 }
 
 .btn-primary {
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-primary-blue);
     color: var(--color-white-bright);
-    border-color: var(--color-red-scarlet);
+    border-color: var(--color-primary-blue);
 }
 .btn-primary:hover {
-    background-color: #9e0d08;
-    border-color: #9e0d08;
+    background-color: #008fdd;
+    border-color: #008fdd;
     transform: translateY(-3px);
-    box-shadow: 0 10px 20px rgba(184, 15, 10, 0.2);
+    box-shadow: 0 10px 20px rgba(0, 174, 255, 0.2);
 }
 
 .btn-secondary {
@@ -131,11 +148,11 @@ section {
 
 .btn-primary-outline {
     background: transparent;
-    color: var(--color-red-scarlet);
-    border-color: var(--color-red-scarlet);
+    color: var(--color-primary-blue);
+    border-color: var(--color-primary-blue);
 }
 .btn-primary-outline:hover {
-    background: var(--color-red-scarlet);
+    background: var(--color-primary-blue);
     color: var(--color-white-bright);
 }
 
@@ -159,26 +176,29 @@ section {
     width: 100%;
     height: var(--header-height);
     z-index: 1000;
-    transition: background-color 0.4s ease, backdrop-filter 0.4s ease;
+    transition: background-color 0.4s ease, backdrop-filter 0.4s ease, height 0.4s ease;
 }
 
+/* --- ALTERAÇÃO: Header e logo diminuem no scroll --- */
 #main-header.scrolled {
-    background-color: rgba(18, 18, 18, 0.8);
+    background-color: rgba(18, 18, 18, 0.85);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    height: 7rem; 
 }
+
+#main-header.scrolled .logo img {
+    max-height: 5.5rem;
+    filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.5));
+}
+
 
 #main-header nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     height: 100%;
-}
-
-.logo {
-    font-size: 3.2rem;
-    color: var(--color-white-bright);
 }
 
 .nav-menu {
@@ -202,7 +222,7 @@ section {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-primary-blue);
     transition: width 0.3s ease;
 }
 
@@ -213,12 +233,12 @@ section {
 .cta-button {
     font-size: 1.4rem;
     padding: 1rem 2rem;
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-primary-blue);
     color: var(--color-white-bright);
     border-radius: 5px;
 }
 .cta-button:hover {
-    background-color: #9e0d08;
+    background-color: #008fdd;
     transform: scale(1.05);
 }
 
@@ -287,11 +307,10 @@ section {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* MODIFICAÇÃO: Regra específica para o H1 da Hero Section */
 .hero h1 {
-    font-size: clamp(3.6rem, 7vw, 7rem); /* Tamanho de fonte responsivo e maior */
-    line-height: 1.25; /* Espaçamento entre linhas ajustado */
-    color: var(--color-white-bright); /* Garante a cor branca, sobrepondo a regra geral */
+    font-size: clamp(3.6rem, 7vw, 7rem); 
+    line-height: 1.25; 
+    color: var(--color-white-bright); 
     margin-bottom: 1.5rem;
 }
 
@@ -343,7 +362,7 @@ section {
     bottom: 0;
     border-radius: 1rem;
     border: 2px solid transparent;
-    background: linear-gradient(to bottom right, var(--color-red-scarlet), transparent, transparent) border-box;
+    background: linear-gradient(to bottom right, var(--color-primary-blue), transparent, transparent) border-box;
     -webkit-mask: 
         linear-gradient(#fff 0 0) padding-box, 
         linear-gradient(#fff 0 0);
@@ -355,7 +374,7 @@ section {
 
 .service-card:hover {
     transform: translateY(-1rem);
-    box-shadow: 0 20px 40px rgba(184, 15, 10, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 174, 255, 0.2);
 }
 
 .service-card:hover::before {
@@ -364,9 +383,9 @@ section {
 
 .service-card i {
     font-size: 4.5rem;
-    color: var(--color-red-scarlet);
+    color: var(--color-primary-blue);
     margin-bottom: 2rem;
-    text-shadow: 0 0 15px rgba(184, 15, 10, 0.5);
+    text-shadow: 0 0 15px rgba(0, 174, 255, 0.5);
 }
 
 .service-card h3 {
@@ -400,7 +419,7 @@ section {
 
 .differentiator-item i {
     font-size: 4rem;
-    color: var(--color-red-scarlet);
+    color: var(--color-primary-blue);
     margin-bottom: 1.5rem;
 }
 
@@ -484,7 +503,7 @@ section {
 .google-rating span {
     font-size: 3rem;
     font-weight: 700;
-    color: #fbbc05;
+    color: #fbbc05; 
 }
 
 .testimonials-grid {
@@ -500,11 +519,11 @@ section {
     padding: 3rem;
     border-radius: 0.5rem;
     box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    border-left: 5px solid var(--color-red-scarlet);
+    border-left: 5px solid var(--color-primary-blue);
 }
 
 .testimonial-card .stars {
-    color: var(--color-gold);
+    color: #fbbc05;
     font-size: 1.8rem;
     margin-bottom: 1.5rem;
 }
@@ -570,7 +589,7 @@ section {
 
 .portfolio-card i {
     font-size: 4rem;
-    color: var(--color-red-scarlet);
+    color: var(--color-primary-blue);
     margin-bottom: 1.5rem;
 }
 
@@ -592,20 +611,20 @@ section {
 }
 
 .portfolio-card.special {
-    background-color: var(--color-gold);
-    color: var(--color-black-carbon);
+    background-color: var(--color-primary-blue);
+    color: var(--color-white-bright);
 }
 
 .portfolio-card.special i,
 .portfolio-card.special h3 {
-    color: var(--color-black-carbon);
+    color: var(--color-white-bright);
 }
 
 .badge {
     position: absolute;
     top: 1.2rem;
     right: -4.5rem;
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-black-carbon);
     color: var(--color-white-bright);
     padding: 0.5rem 4rem;
     font-size: 1.2rem;
@@ -620,7 +639,7 @@ section {
 }
 
 .swiper-pagination-bullet-active {
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-primary-blue);
 }
 
 .portfolio-carousel-wrapper .swiper-button-next,
@@ -648,7 +667,7 @@ section {
 
 .portfolio-carousel-wrapper .swiper-button-next:hover,
 .portfolio-carousel-wrapper .swiper-button-prev:hover {
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-primary-blue);
     transform: translateY(-50%) scale(1.1); 
 }
 
@@ -688,9 +707,9 @@ section {
 }
 
 .location-tab-btn.active {
-    background-color: var(--color-red-scarlet);
+    background-color: var(--color-primary-blue);
     color: var(--color-white-bright);
-    box-shadow: 0 4px 10px rgba(184, 15, 10, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 174, 255, 0.3);
 }
 
 .location-pane {
@@ -725,7 +744,7 @@ section {
     border-radius: .5rem;
     overflow: hidden;
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    height: 45rem; /* --- ALTERAÇÃO: ALTURA FIXA PARA PADRONIZAR --- */
+    height: 45rem; 
 }
 
 .unidade-img img {
@@ -750,13 +769,13 @@ section {
     color: var(--color-white-bright);
     font-size: 2.2rem;
     margin-bottom: 1rem;
-    border-left: 3px solid var(--color-red-scarlet);
+    border-left: 3px solid var(--color-primary-blue);
     padding-left: 1rem;
 }
 
 .unidade-info h3 i {
     margin-right: .5rem;
-    color: var(--color-red-scarlet);
+    color: var(--color-primary-blue);
 }
 
 .unidade-info p {
@@ -826,20 +845,20 @@ section {
 }
 
 .cta-main-action {
-    background-color: var(--color-gold);
+    background-color: var(--color-orange-cta);
     color: var(--color-black-carbon);
     padding: 1.5rem 3rem;
     font-size: 1.8rem;
     transform: none; 
-    box-shadow: 0 5px 15px rgba(251, 188, 5, 0.3);
+    box-shadow: 0 5px 15px rgba(255, 165, 0, 0.3);
     width: auto;
     display: inline-flex;
 }
 
 .cta-main-action:hover {
-    background-color: #e0aa04;
+    background-color: #e08e00;
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(251, 188, 5, 0.4);
+    box-shadow: 0 8px 20px rgba(255, 165, 0, 0.4);
 }
 
 .main-footer {
@@ -868,7 +887,7 @@ section {
     margin-bottom: 1rem;
 }
 .footer-links a:hover {
-    color: var(--color-red-scarlet);
+    color: var(--color-primary-blue);
 }
 
 .footer-social a {
@@ -876,7 +895,7 @@ section {
     margin: 0 1rem;
 }
 .footer-social a:hover {
-    color: var(--color-red-scarlet);
+    color: var(--color-primary-blue);
     transform: scale(1.2);
 }
 
@@ -965,10 +984,9 @@ section {
         gap: 2rem;
     }
 
-    /* --- ALTERAÇÃO: AJUSTE RESPONSIVO PARA ALTURA --- */
     .unidade-img {
         height: auto;
-        max-height: 40rem; /* Evita que a imagem fique muito alta no mobile */
+        max-height: 40rem; 
     }
     .unidade-info {
         min-height: auto;
